@@ -11,7 +11,7 @@
           <img [src]="product.imageUrl" alt="{{ product.name }}">
         </div>
         <div class="product-details">
-          <h3>{{ product.name }}</h3>
+          <h3>{{ product.name }} <span class="rating">Рейтинг: {{ product.rating }} / 5</span> </h3>
           <p class="price">{{ product.price | currency:'KZT':'symbol-narrow':'1.0-0' }}</p>
           <button (click)="toggleDescription(product)">Показать описание</button>
           <button (click)="shareOnWhatsApp(product.link)" id="ws">Поделиться (WhatsApp)</button>
