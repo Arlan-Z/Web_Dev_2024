@@ -90,7 +90,6 @@
             color: red;
             font-size: 18px;
             cursor: pointer;
-            transition: color 0.3s ease;
         }
 
         .delete-btn:hover {
@@ -104,6 +103,7 @@
     <div class="input-container">
         <input type="text" id="newTodoInput" placeholder="Add new item">
         <button onclick="addItem()">Add</button>
+        <button onclick="removeAll()">Remove All</button>
     </div>
     <ul id="todoList"></ul>
 </div>
@@ -142,6 +142,12 @@
 
     function deleteItem(index) {
         todos.splice(index, 1);
+        renderTodoList();
+    }
+
+    function removeAll()
+    {
+        todos=[];
         renderTodoList();
     }
 

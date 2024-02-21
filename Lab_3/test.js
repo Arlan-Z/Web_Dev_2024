@@ -17,3 +17,5 @@ const person2 = new Person("Bob", 30);
 
 person1.sayInfo();
 person2.sayInfo();
+console.info(person1.sayInfo);
+
