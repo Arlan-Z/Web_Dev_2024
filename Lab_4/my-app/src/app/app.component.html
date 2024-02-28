@@ -6,7 +6,7 @@
     <div *ngFor="let product of products" class="product-item">
       <div class="product-content">
         <div class="product-image" (click)="toggleDescription(product)">
-          <img [src]="product.imageUrl" alt="{{ product.name }}">
+          <img [src]="product.imageUrl" alt="{{ product.name }}" (click) = "redirectToLink(product.link)">
         </div>
         <div class="product-details">
           <h3>{{ product.name }} <span class="rating">Рейтинг: {{ product.rating }} / 5</span> </h3>
