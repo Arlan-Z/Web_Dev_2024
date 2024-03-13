@@ -519,7 +519,7 @@ export class AlbumsComponent implements OnInit {
       }
     ];
 
-    // Assign the albums list to the albums$ property as an Observable
+    
     this.albums$ = of(albumsList);
   }
 
