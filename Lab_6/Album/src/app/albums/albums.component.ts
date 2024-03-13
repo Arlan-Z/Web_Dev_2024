@@ -534,7 +534,7 @@ export class AlbumsComponent implements OnInit {
   }
 
   createAlbum(): void {
-    // Find the ID for the new album
+    
     let newAlbumId = 1;
     this.albums$.subscribe(albums => {
       if (albums.length > 0) {
@@ -542,20 +542,20 @@ export class AlbumsComponent implements OnInit {
       }
     });
 
-    // Create the new album locally
+    
     const newAlbum: Album = {
-      userId: this.newUserId || 1, // Default to user ID 1 if not provided
+      userId: this.newUserId || 1, 
       id: newAlbumId,
       title: this.newAlbumTitle
     };
 
-    // Add the new album to the existing list
+ 
     this.albums$.subscribe(albums => {
       albums.push(newAlbum);
       this.albums$ = of(albums);
     });
 
-    // Clear the input fields
+    
     this.newAlbumTitle = '';
     this.newUserId = undefined;
   }
