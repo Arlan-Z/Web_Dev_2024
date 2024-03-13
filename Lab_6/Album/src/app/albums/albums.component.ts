@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of, switchMap } from 'rxjs';
 import { Album } from '../album.model'; 
 import { AlbumsService } from '../album.service'; 
 
@@ -11,7 +11,8 @@ import { AlbumsService } from '../album.service';
 })
 export class AlbumsComponent implements OnInit {
   albums$: Observable<Album[]> = new Observable<Album[]>();;
-
+  newAlbumTitle: string = '';
+  newUserId: number | undefined;
   constructor(private albumService: AlbumsService, private router: Router) { }
 
   ngOnInit(): void {
@@ -527,9 +528,35 @@ export class AlbumsComponent implements OnInit {
   }
 
   deleteAlbum(albumId: number): void {
-    this.albumService.deleteAlbum(albumId).subscribe(() => {
-      // Optionally, you can reload the albums list after deletion
-      this.albums$ = this.albumService.getAlbums();
+    this.albums$ = this.albums$.pipe(
+    map(albums => albums.filter(album => album.id !== albumId))
+    );
+  }
+
+  createAlbum(): void {
+    // Find the ID for the new album
+    let newAlbumId = 1;
+    this.albums$.subscribe(albums => {
+      if (albums.length > 0) {
+        newAlbumId = albums[albums.length - 1].id + 1;
+      }
     });
+
+    // Create the new album locally
+    const newAlbum: Album = {
+      userId: this.newUserId || 1, // Default to user ID 1 if not provided
+      id: newAlbumId,
+      title: this.newAlbumTitle
+    };
+
+    // Add the new album to the existing list
+    this.albums$.subscribe(albums => {
+      albums.push(newAlbum);
+      this.albums$ = of(albums);
+    });
+
+    // Clear the input fields
+    this.newAlbumTitle = '';
+    this.newUserId = undefined;
   }
 }

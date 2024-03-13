@@ -30,11 +30,8 @@ export class AlbumDetailComponent implements OnInit {
   }
 
   saveTitle() {
-    this.albumsService.updateAlbum(this.album.id, { title: this.newTitle }).subscribe(() => {
-      this.editable = false;
-      // Reload the album with updated title
-      this.ngOnInit();
-    });
+    this.album.title = this.newTitle;
+    this.editable = false;
   }
 
   goToPhotos() {

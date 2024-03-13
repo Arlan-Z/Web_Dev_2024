@@ -1,3 +1,18 @@
+
+<div class="container">
+  <h1>Create New Album</h1>
+  <div>
+    <label for="newAlbumTitle">Album Title:</label>
+    <input type="text" id="newAlbumTitle" [(ngModel)]="newAlbumTitle">
+  </div>
+  <div>
+    <label for="newUserId">User ID:</label>
+    <input type="number" id="newUserId" [(ngModel)]="newUserId">
+  </div>
+  <button (click)="createAlbum()">Create Album</button>
+
+  <hr>
+
 <div class="container">
   <h1>Albums</h1>
   <ul>
