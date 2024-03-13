@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlbumsService } from '../album.service';
+import { Album } from '../album.model'
 
 @Component({
   selector: 'app-album-photos',
@@ -9,17 +10,21 @@ import { AlbumsService } from '../album.service';
   styleUrls: ['./album-photos.component.css']
 })
 export class AlbumPhotosComponent implements OnInit {
-  photos: any[] = [];
+    album: Album | undefined;
 
   constructor(private route: ActivatedRoute, private router: Router, private albumsService: AlbumsService) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id !== null) {
-      this.albumsService.getAlbumById(+id).subscribe(album => this.photos = album.photos);
-    } else {
-      console.error('ID параметра отсутствует в маршруте');
-  }
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      if (id) {
+        this.albumsService.getAlbumById(+id).subscribe(album => {
+          this.album = album;
+        });
+      } else {
+        console.error('Invalid album ID');
+      }
+    });
   }
 
   goBack() {

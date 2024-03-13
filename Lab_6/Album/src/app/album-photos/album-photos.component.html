@@ -1,10 +1,6 @@
-<!-- album-photos.component.html -->
 
-<div class="container" *ngIf="photos">
-    <h1>Album Photos</h1>
-    <div>
-      <img *ngFor="let photo of photos" [src]="photo.url" alt="{{ photo.title }}">
-    </div>
-    <button (click)="goBack()">Return back</button>
-  </div>
-  
+
+<div class="container">
+    <h1>{{ album?.title }}</h1> <!-- Display the album title -->
+    <img src="https://www.billboard.com/wp-content/uploads/media/tyler-the-creator-igor-album-art-2019-billboard-embed.jpg?w=600" alt="album">
+</div>
