@@ -1,0 +1,12 @@
+.album-title {
+    color: blue;
+    text-decoration: underline;
+  }
+
+.delete-button{
+    margin-left: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: red;
+    color: white
+}

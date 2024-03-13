@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   categories = ['Food', 'Drinks', 'Sauce', 'Desert'];
-  products: { id: number, name: string, category: string, likes: number, imageUrl: string}[];
+  products: { id: number, name: string, category: string, likes: number, imageUrl: string, isLiked?: boolean}[];
 
   selectedCategory: string | null = null;
   selectedProducts: any[] = [];
@@ -18,8 +18,15 @@ export class AppComponent {
   }
 
   likeProduct(product: any) {
-    product.likes++;
     console.log("app.likeProduct worked success");
+    if(!product.isLiked)
+    {
+      product.likes++;
+    }
+    else{
+      product.likes--;
+    }
+    product.isLiked = !product.isLiked;
     // console.log(product);
   }
 

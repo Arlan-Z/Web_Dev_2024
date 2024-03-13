@@ -1,0 +1,10 @@
+<!-- album-photos.component.html -->
+
+<div class="container" *ngIf="photos">
+    <h1>Album Photos</h1>
+    <div>
+      <img *ngFor="let photo of photos" [src]="photo.url" alt="{{ photo.title }}">
+    </div>
+    <button (click)="goBack()">Return back</button>
+  </div>
+  

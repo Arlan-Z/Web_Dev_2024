@@ -1,0 +1,15 @@
+<!-- album-detail.component.html -->
+
+<div class="container" *ngIf="album">
+    <h1>Album Detail</h1>
+    <div>
+      <p>ID: {{ album.id }}</p>
+      <p>Title: <span *ngIf="!editable">{{ album.title }}</span></p>
+      <input type="text" [(ngModel)]="newTitle" *ngIf="editable">
+      <button *ngIf="editable" (click)="saveTitle()">Save</button>
+      <button (click)="editTitle()">Edit</button>
+    </div>
+    <button (click)="goToPhotos()">Photos</button>
+    <button routerLink="/albums">Return back</button>
+  </div>
+  
