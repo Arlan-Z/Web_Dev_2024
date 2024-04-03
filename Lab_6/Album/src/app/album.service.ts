@@ -28,3 +28,7 @@ export class AlbumsService {
     return this.http.put<any>(`${this.apiUrl}/${id}`, data);
   }
 }
+
+
+// beeceptor
+// angular pwa
