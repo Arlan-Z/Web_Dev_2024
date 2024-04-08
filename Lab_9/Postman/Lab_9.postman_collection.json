@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "98dd6aca-e220-4674-a56d-8b8f060fd0a6",
+		"name": "Lab_9",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "34147998"
+	},
+	"item": [
+		{
+			"name": "Get_Companies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://127.0.0.1:8000/api/companies/"
+			},
+			"response": []
+		},
+		{
+			"name": "Get_Vacancies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://127.0.0.1:8000/api/vacancies/"
+			},
+			"response": []
+		},
+		{
+			"name": "Top_10_Vac",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://127.0.0.1:8000/api/vacancies/top_ten/"
+			},
+			"response": []
+		}
+	]
+}
