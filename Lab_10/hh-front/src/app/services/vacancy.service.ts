@@ -8,9 +8,16 @@ import { Vacancy } from '../interfaces/vacancy';
 })
 export class VacancyService {
 
+
+  private apiUrl = 'http://127.0.0.1:8000/api/vacancies/';
+
   constructor(private http: HttpClient) { }
 
+
   getVacanciesByCompanyId(companyId: number): Observable<Vacancy[]> {
-    return this.http.get<Vacancy[]>('/api/companies/' + companyId + '/vacancies/');
+
+    const url = `${this.apiUrl}?companyId=${companyId}`;
+
+    return this.http.get<Vacancy[]>(url);
   }
 }

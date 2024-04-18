@@ -8,9 +8,15 @@ import { Company } from '../interfaces/company';
 })
 export class CompanyService {
 
+  private apiUrl = 'http://127.0.0.1:8000/api/companies/';
+
   constructor(private http: HttpClient) { }
 
+
   getCompanies(): Observable<Company[]> {
-    return this.http.get<Company[]>('/api/companies/');
+
+    return this.http.get<Company[]>(this.apiUrl);
   }
 }
+
+    

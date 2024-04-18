@@ -9,7 +9,7 @@ import { CompanyService } from '../../services/company.service';
 })
 export class CompanyListComponent implements OnInit {
   companies: Company[] = [];
-  selectedCompanyId: number | null = null;
+  selectedCompanyId!: number; // Use non-null assertion operator
 
   constructor(private companyService: CompanyService) { }
 
